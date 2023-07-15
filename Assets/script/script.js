@@ -2,8 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-dayjs().day();
-console.log(dayjs());
+
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
