@@ -4,7 +4,7 @@
 var currentDate = dayjs().format('dddd, MMM');
 var currentYear = dayjs().format('YYYY');
 var currentDay = dayjs().format('DD');
-var currentHour = dayjs().format('HH');
+var currentHour = parseInt(dayjs().format('HH'));
 
 
 $(function () {
@@ -29,7 +29,7 @@ $(function () {
 $(document).ready(function() {
   
 
-  
+  // This function is for the hours of the workday
   $('.time-block').each(function() {
     var timeBlockHour = parseInt($(this).attr('id').split('-')[1]);
     if (timeBlockHour < currentHour) {
@@ -43,12 +43,13 @@ $(document).ready(function() {
   })
 
 
+  // This function is for the save button
  $('.saveBtn').on('click', function(event) {
   event.preventDefault();
   console.log(event.target);
-  var sib = $(event.target).siblings('textArea').val();
+  var par = $(event.target).parent('button').siblings('textArea').val();
   // console.log(sib);
-  localStorage.setItem('textArea', sib);
+  localStorage.setItem('textArea', par);
  })
 
 
