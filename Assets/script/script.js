@@ -23,6 +23,23 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+$(document).ready(function() {
+  var currentHour = moment().hour();
+
+  $('.time-block').each(function() {
+    var blockHour = parseInt($(this).attr('id').split('-')[2]);
+
+    if (blockHour < currentHour) {
+      $(this).addClass('past');
+    } else if (blockHour === currentHour) {
+      $(this).addClass('present');
+    } else {
+      $(this).addClass('future');
+    }
+  })
+})
+
+
  $('.saveBtn').on('click', function(event) {
   event.preventDefault();
   console.log(event.target);
