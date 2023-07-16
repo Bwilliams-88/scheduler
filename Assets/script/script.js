@@ -1,7 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-
+var currentDate = dayjs().format('dddd, MMM');
+var currentYear = dayjs().format('YYYY');
+var currentDay = dayjs().format('DD');
+var currentHour = dayjs().format('HH');
 
 
 $(function () {
@@ -24,17 +27,18 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 $(document).ready(function() {
-  var currentHour = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-// console.log(currentHour);
-  $('.time-block').each(function() {
-    var timeBlockHour = parseInt($(this).attr('id').split('-')[2]);
+  
 
+  
+  $('.time-block').each(function() {
+    var timeBlockHour = parseInt($(this).attr('id').split('-')[1]);
     if (timeBlockHour < currentHour) {
       $(this).addClass('past');
     } else if (timeBlockHour === currentHour) {
       $(this).addClass('present');
     } else {
       $(this).addClass('future');
+    // console.log(timeBlockHour);
     }
   })
 
@@ -48,9 +52,7 @@ $(document).ready(function() {
  })
 
 
-  var currentDate = dayjs().format('dddd, MMM');
-  var currentYear = dayjs().format('YYYY');
-  var currentDay = dayjs().format('DD');
+
   // console.log(currentDay);
   const nth = function(d) {
     if (d > 3 && d < 21) return 'th';
