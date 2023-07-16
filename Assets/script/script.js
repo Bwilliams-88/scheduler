@@ -23,6 +23,27 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-  var currentDate = dayjs().format('dddd, MMM D, YYYY');
-  $('#currentDay').text(currentDate);
+ $('.saveBtn').on('click', function(event) {
+  event.preventDefault();
+  console.log(event.target);
+  var sib = $(event.target).siblings('textArea').val();
+  // console.log(sib);
+  localStorage.setItem('textArea', sib);
+ })
+
+
+  var currentDate = dayjs().format('dddd, MMM');
+  var currentYear = dayjs().format('YYYY');
+  var currentDay = dayjs().format('DD');
+  // console.log(currentDay);
+  const nth = function(d) {
+    if (d > 3 && d < 21) return 'th';
+    switch (d % 10) {
+      case 1:  return "st";
+      case 2:  return "nd";
+      case 3:  return "rd";
+      default: return "th";
+    }
+  }
+  $('#currentDay').text(currentDate + ' ' + currentDay + nth(currentDay) + ' ' + currentYear);
 });
