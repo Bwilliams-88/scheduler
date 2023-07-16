@@ -47,7 +47,7 @@ $(document).ready(function() {
  $('.saveBtn').on('click', function(event) {
   event.preventDefault();
   console.log(event.target);
-  var par = $(event.target).parent('button').siblings('textArea').val();
+  var par = $(this).siblings('.description').val();
   // console.log(sib);
   localStorage.setItem('textArea', par);
  })
