@@ -24,20 +24,19 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 $(document).ready(function() {
-  var currentHour = moment().hour();
+  var currentHour = (new Date()).getHours();
+// console.log(currentHour);
+  $('.colorcode')
+  .each(function() {
+    var val = parseInt($(this).prop('id'));
 
-  $('.time-block').each(function() {
-    var blockHour = parseInt($(this).attr('id').split('-')[2]);
-
-    if (blockHour < currentHour) {
-      $(this).addClass('past');
-    } else if (blockHour === currentHour) {
-      $(this).addClass('present');
-    } else {
-      $(this).addClass('future');
-    }
-  })
-})
+    if (val > currentHour && val < currentHour -6) {
+      $(this).css('past');
+    } else if (val === currentHour) {
+      $(this).css('present');
+    } else (val > currentHour && val < currentHour +6) 
+      $(this).css('future');
+    })
 
 
  $('.saveBtn').on('click', function(event) {
@@ -63,4 +62,5 @@ $(document).ready(function() {
     }
   }
   $('#currentDay').text(currentDate + ' ' + currentDay + nth(currentDay) + ' ' + currentYear);
-});
+})
+})
