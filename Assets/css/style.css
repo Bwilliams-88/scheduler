@@ -7,6 +7,11 @@ h1, p {
   text-align: center;
 }
 
+hr.divider {
+  border-top: solid 4px;
+  border-color: black;
+}
+
 textarea {
   background: transparent;
   border: none;
